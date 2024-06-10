@@ -28,7 +28,7 @@ Welcome to the Ecommerce IT platform, a comprehensive solution designed for both
 - **Database**: SQL Workbench
 
 ## Demonstration Video
-To see the features of our platform in action, please watch the demonstration video: [front.mp4](path-to-video).
+To see the features of our platform in action, please watch the demonstration video: [front.mp4](https://github.com/fouratkandil/Ecommerce/blob/main/Front.mp4).
 
 ## Getting Started
 To get started with this project, clone the repository and follow the setup instructions for the frontend, backend, and database.
