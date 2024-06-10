@@ -1,0 +1,50 @@
+<div class="container">
+<ng-container>
+    <mat-table #basicTable [dataSource]="myOrders" class="mat-elevation-z8">
+        <ng-container matColumnDef="trackingId">
+            <mat-header-cell mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">Tracking ID</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let myorder"> {{myorder.trackingId}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <mat-header-cell mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">Amount</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let myorder" style="font-weight: 600;" > {{myorder.amount}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">Description</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let myorder"> {{myorder.orderDescription}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <mat-header-cell mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">Address</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let myorder"> {{myorder.address}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date" style="font-weight: bolder; ">
+            <mat-header-cell mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;" > Date</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let myorder"> {{myorder.date | date:'dd/MM/yyyy' }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <mat-header-cell mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">Status</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let myorder"> {{myorder.orderStatus}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action" style="font-weight: bolder; ">
+            <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">Action</mat-header-cell>
+            <mat-cell *matCellDef="let myorder">
+                <span *ngIf="myorder.orderStatus=='Delivered'">
+                    <button mat-stroked-button color="primary" type="submit" 
+                    routerLink="/customer/ordered_products/{{myorder.id}}" >Review</button>
+                </span>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['trackingId', 'amount', 'description', 'address','date', 'status','action']"></mat-header-row>
+        <mat-row *matRowDef="let myorder; columns:['trackingId', 'amount', 'description', 'address','date', 'status', 'action']"></mat-row>
+    </mat-table>
+</ng-container>
+
+
+</div>

@@ -1,0 +1,277 @@
+
+    
+    <div *ngIf="isAdminLoggedIn && !isCustomerLoggedIn">
+
+      <mat-toolbar class="mat-elevation-z8">
+        <button
+          mat-icon-button
+          *ngIf="sidenav.mode === 'over'"
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+          <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+        </button>
+      </mat-toolbar>
+      
+      <mat-sidenav-container>
+        <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+          <img
+            class="avatar mat-elevation-z8"
+            src="../../../assets/img/logo.png"
+          />
+          <span class="navbar-brand">Tech-Store</span>
+
+      
+          <mat-divider></mat-divider>
+
+          <button mat-button class="menu-button" routerLink="/admin/dashboard" routerLinkActive="active">
+            <mat-icon>home</mat-icon>
+            <span>Dashboard</span>
+          </button>
+
+          <button mat-button class="menu-button" routerLink="/admin/analytics" >
+            <mat-icon>analytics</mat-icon>
+            <span>Analytics</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="/admin/category">
+            <mat-icon>category</mat-icon>
+            <span>Category</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="/admin/product">
+            <mat-icon>store</mat-icon>
+            <span>Product</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="/admin/orders">
+            <mat-icon>shopping_cart</mat-icon>
+            <span>Orders</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="/admin/post-coupon">
+            <mat-icon> receipt</mat-icon>
+            <span>Post Coupon</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="/admin/coupons">
+            <mat-icon>local_offer</mat-icon>
+            <span> Coupon</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="/admin/user">
+            <mat-icon>person</mat-icon>
+            <span> user</span>
+          </button>
+          <mat-divider></mat-divider>
+      
+          <button mat-button class="menu-button" routerLinkActive="active" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+          </button>
+
+        </mat-sidenav>
+        <mat-sidenav-content>
+          <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+          </div>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+     
+      </div>
+
+
+
+
+
+<div *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
+<!-- HEADER -->
+<header>
+  <!-- TOP HEADER -->
+  <div id="top-header">
+    <div class="container">
+      <ul class="header-links pull-left">
+        <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
+        <li><a href="#"><i class="fa fa-envelope-o"></i> email&#64;email.com</a></li>
+        <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonechat Road</a></li>
+      </ul>
+      <ul class="header-links pull-right">
+        <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
+        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- /TOP HEADER -->
+
+  <!-- MAIN HEADER -->
+  <div id="header">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <!-- LOGO -->
+        <div class="col-md-3">
+          <div>
+            <img
+            class="avatar1 mat-elevation-z8"
+            src="../../../assets/img/logo.png"
+          />
+          </div>
+        </div>
+        <!-- /LOGO -->
+        <div class="col-md-6">
+          
+        
+        </div>
+       
+
+        <!-- ACCOUNT -->
+        <div class="col-md-3 clearfix">
+          <div class="header-ctn">
+            <!-- Wishlist -->
+            <div>
+              <a  class="login-message" *ngIf="!isUserLoggedIn()" (click)="onWishlistClick()" >
+                <i class="fa fa-heart-o"></i>
+                <span>Your Wishlist</span>
+                <div class="qty">+</div>
+              </a>
+          
+            </div>
+            <!-- /Wishlist -->
+
+            <!-- Cart -->
+            <div routerLink="/customer/cart">
+              <a aria-expanded="true" style="cursor: pointer;">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Your Cart</span>
+              </a>
+             
+            </div>
+          
+          </div>
+        </div>
+        <!-- /ACCOUNT -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </div>
+  <!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
+
+<!-- NAVIGATION -->
+<nav id="navigation">
+  <!-- container -->
+  <div class="container">
+    <!-- responsive-nav -->
+    <div id="responsive-nav">
+      <!-- NAV -->
+      <ul class="main-nav nav py-3">
+        <li class="active"><button mat-button routerLink="">Home</button></li>
+        <li class="active"> <button mat-button routerLink="/order" routerLinkActive="active">Track Order</button></li>
+        <li class="active"> <button mat-button routerLink="/login" routerLinkActive="active">Login</button></li>
+        <li class="active"> <button mat-button routerLink="/signup" routerLinkActive="active">Register</button></li>
+      </ul>
+      <!-- /NAV -->
+    </div>
+    <!-- /responsive-nav -->
+  </div>
+  <!-- /container -->
+</nav>
+<!-- /NAVIGATION -->
+</div>
+
+
+
+<!-- login the new header-->
+<div *ngIf="isCustomerLoggedIn && !isAdminLoggedIn">
+
+<!-- HEADER -->
+<header>
+  <!-- TOP HEADER -->
+  <div id="top-header">
+    <div class="container">
+      <ul class="header-links pull-left">
+        <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
+        <li><a href="#"><i class="fa fa-envelope-o"></i> email&#64;email.com</a></li>
+        <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonechat Road</a></li>
+      </ul>
+      <ul class="header-links pull-right">
+        <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
+        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- /TOP HEADER -->
+
+  <!-- MAIN HEADER -->
+  <div id="header">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <!-- LOGO -->
+        <div class="col-md-3">
+          <img
+            class="avatar1 mat-elevation-z8"
+            src="../../../assets/img/logo.png"
+          />
+        </div>
+        <!-- /LOGO -->
+        <div class="col-md-6">
+          
+        
+        </div>
+       
+        <!-- ACCOUNT -->
+        <div class="col-md-3 clearfix">
+          <div class="header-ctn">
+            <!-- Wishlist -->
+            <div routerLink="/customer/wishlist" routerLinkActive="active">
+              <a >
+                <i class="fa fa-heart-o"></i>
+                <span>Your Wishlist</span>
+                <div class="qty">+</div>
+              </a>
+          
+            </div>
+            <!-- /Wishlist -->
+
+            <!-- Cart -->
+            <div routerLink="/customer/cart">
+              <a aria-expanded="true" style="cursor: pointer;">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Your Cart</span>
+              </a>
+             
+            </div>
+          
+          </div>
+        </div>
+        <!-- /ACCOUNT -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </div>
+  <!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
+
+<!-- NAVIGATION -->
+<nav id="navigation">
+  <!-- container -->
+  <div class="container">
+    <!-- responsive-nav -->
+    <div id="responsive-nav">
+      <!-- NAV -->
+      <ul class="main-nav nav py-3">
+        <li class="active"><button mat-button routerLink="/customer/dashboard">Home</button></li>
+        
+        <li class="active"><button mat-button routerLink="/customer/my_orders" routerLinkActive="active">Orders</button></li>
+        <li class="active"> <button mat-button [routerLink]="'/customer/profile/' + userId" routerLinkActive="active">Profile</button></li>
+        <li class="active"> <button mat-button  (click)="logout()">Logout</button></li>
+      </ul>
+      <!-- /NAV -->
+    </div>
+    <!-- /responsive-nav -->
+  </div>
+  <!-- /container -->
+</nav>
+<!-- /NAVIGATION -->
+</div>
